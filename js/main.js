@@ -141,7 +141,7 @@ $(document).ready(function(){
     console.log("zipcodes parsed");
     var layerMappedPolygons = L.geoJson(parsedzipdata1,
       {
-        style: {opacity:0.4,width:0.5,color:'	#4169E1'},
+        style: {opacity:0.8,width:0.8,color:'	#4169E1'},
         // filter: myFilter2,
         pointToLayer: function (feature, latlngs) {
           return new L.Polygon(latlngs, {
