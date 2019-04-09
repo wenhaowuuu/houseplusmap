@@ -11,6 +11,8 @@
 
 //claim the global variables:
 var zipcodes_url = "https://raw.githubusercontent.com/wenhaowuuu/CodeBrickMap/master/data/bay_zipcode.geojson";
+var landuse_url = "https://raw.githubusercontent.com/wenhaowuuu/houseplusmap/master/data/20190409_PA_landuse.geojson";
+
 
 var coordsMiddleSchools = [];
 var heat_middleschools;
