@@ -11,7 +11,7 @@
 
 //claim the global variables:
 var zipcodes_url = "https://raw.githubusercontent.com/wenhaowuuu/CodeBrickMap/master/data/bay_zipcode.geojson";
-var landuse_url = "https://raw.githubusercontent.com/wenhaowuuu/houseplusmap/master/data/20190409_PA_landuse.geojson";
+var landuse_url = "https://raw.githubusercontent.com/wenhaowuuu/houseplusmap/master/data/20190409_PA_landuse_WGS.geojson";
 
 
 var coordsMiddleSchools = [];
@@ -132,6 +132,25 @@ $(document).ready(function(){
     });
 });
 
+
+
+//map land use shapefiles in Palo Alto
+$(document).ready(function(){
+  $.ajax(landuse_url).done(function(data) {
+    var parsedzipdata1 = JSON.parse(data);
+    console.log("zipcodes parsed");
+    var layerMappedPolygons = L.geoJson(parsedzipdata1,
+      {
+        style: {opacity:0.4,width:0.5,color:'	#4169E1'},
+        // filter: myFilter2,
+        pointToLayer: function (feature, latlngs) {
+          return new L.Polygon(latlngs, {
+            });
+          }
+      // }).addTo(map).bindPopup(feature.properties.zip);
+    }).addTo(map).bindPopup("Check the land use zoning here!");
+    });
+});
 
 
 //add the point data from the shared google sheet
