@@ -128,7 +128,7 @@ $(document).ready(function(){
             });
           }
       // }).addTo(map).bindPopup(feature.properties.zip);
-    }).addTo(map).bindPopup("我们住同一个社区耶!");
+    }).addTo(map).bindTooltip("我们住同一个社区耶!");
     });
 });
 
