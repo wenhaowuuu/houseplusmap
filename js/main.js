@@ -26,7 +26,7 @@ var southWest = L.latLng(37.015900, -123.355811),
 
 var map = L.map('map', {
  maxBounds: bounds,
- center: [37.442888, -122.164975],
+ center: [37.440127, -122.147568],
  zoom: 15,
  minZoom: 7,
  maxZoom: 18
