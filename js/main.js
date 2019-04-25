@@ -27,7 +27,7 @@ var southWest = L.latLng(37.015900, -123.355811),
 var map = L.map('map', {
  maxBounds: bounds,
  center: [37.442888, -122.164975],
- zoom: 13,
+ zoom: 15,
  minZoom: 7,
  maxZoom: 18
 });
@@ -169,7 +169,7 @@ $(document).ready(function() {
                         new L.icon({
                         iconUrl: 'https://raw.githubusercontent.com/wenhaowuuu/houseplusmap/master/house-icon-s.png',
                         // iconUrl: 'https://image.ibb.co/h1dYFk/city_icons_01.png',
-                        iconSize:     [30, 30],
+                        iconSize:     [15, 15],
                         shadowSize:   [10, 10],
                         iconAnchor:   [20, 20],
                     })
