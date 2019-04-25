@@ -152,6 +152,36 @@ $(document).ready(function(){
     });
 });
 
+
+//map the joined address point data
+$(document).ready(function() {
+        // $('#citypop').click(function(){
+          // map.removeLayer(state.drawnOnMap);
+          // map.removeLayer(layerMappedMarkers);
+          $.ajax(address_url).done(function(data) {
+            var parsedadptdata = JSON.parse(data);
+            console.log("ad pts parsed");
+            var layerMappedMarkers = L.geoJson(parsedadptdata,
+              {
+                pointToLayer: function (feature, latlng) {
+                  return new L.Marker(latlng, {
+                    icon:
+                        new L.icon({
+                        iconUrl: 'https://i.ibb.co/G9qZPR0/house-icon.png',
+                        // iconUrl: 'https://image.ibb.co/h1dYFk/city_icons_01.png',
+                        iconSize:     [25, 25],
+                        shadowSize:   [10, 10],
+                        iconAnchor:   [20, 20],
+                    })
+                  }).bindTooltip(feature.properties.Name + ': ' + feature.properties.Designatio);
+              }
+            }).addTo(map);
+          });
+      // });
+    }
+  );
+
+
 //add the point data from the shared google sheet
 // var code = "2PACX-1vS7PmW1BbpRdjWqeTQJM7SjHKsuVMJAFf9-b5-BzTEtz15xcQ7Rz4a6VKGV09dArOFG8hb6C66Ydnww";
 var sheeturl = 'https://docs.google.com/spreadsheets/d/1GW94JUDnyQYB3qzIK9sPuLUgwnDyEy4w3eWBASjdFPE/edit?usp=sharing';
@@ -159,113 +189,115 @@ var sheeturl = 'https://docs.google.com/spreadsheets/d/1GW94JUDnyQYB3qzIK9sPuLUg
 //SHOW THE MAP DIV GRADUALLY
 $('#map-mappage').show(10000);
 // map.addLayer(hybridmap);
-document.addEventListener('DOMContentLoaded',function(){
- Tabletop.init({
-     key: sheeturl, //google spreadsheet id
-     callback: function(sheet, tabletop){
-       for (var i in sheet){
-         var place = sheet[i]; //getting e row from table
-         var coord = [place.Hlat, place.Hlon];
-         coordsMiddleSchools.push(coord);
 
-         var CompanyLayerMappedMarker = L.marker([place.Clat, place.Clon]).addTo(map)
-           .bindTooltip(
-             // "<img src=" + "/> " +
-             "<img src=https://ibb.co/WzbnY1P>" +
-             "</br>" +
-
-             // "<b>Name: </b>" +
-             // place.FirstName + ' ' + place.LastName +
-             // "</br>" +
-
-             "<b>Title: </b>" +
-             place.Title +
-             "</br>" +
-
-             "<b>Company: </b>" +
-             place.Company +
-             "</br>" +
-
-             // "<b>Relationship: </b>" +
-             // place.Relationship +
-             // "</br>" +
-
-             "</br><button class='btn btn-light my-2 my-sm-0' style='font-size:12px;'>Connect!</button>"
-           );
-
-        CompanyMarkers.push(CompanyLayerMappedMarker);
-        // console.log(CompanyMarkers);
-        console.log("company marker generated.");
-
-
-         var HomeLayerMappedMarker = L.marker([place.Hlat, place.Hlon])
-           .addTo(map)
-           .bindTooltip(
-             // "<img src=" + "/> " +
-             "<img src=https://simplemaps.com/static/img/frog.png>" +
-             "</br>" +
-
-             "<b>Name: </b>" +
-             place.FirstName + ' ' + place.LastName +
-             "</br>" +
-
-             "<b>Title: </b>" +
-             place.Title +
-             "</br>" +
-
-             "<b>Company: </b>" +
-             place.Company +
-             "</br>" +
-
-             "<b>Relationship: </b>" +
-             place.Relationship +
-             "</br>" +
-
-             "</br><button class='btn btn-light my-2 my-sm-0' style='font-size:12px;'>Connect!</button>"
-           );
-
-        HomeMarkers.push(HomeLayerMappedMarker);
-
-           }
-
-     },
-     simpleSheet: true
-   });
-
-   //GENERATE HEATMAP FOR THE MIDDLE SCHOOL DATA
-
-   //Reference
-   // http://jsfiddle.net/jpeter06/yugh7t5m/
-
-   coordsMiddleSchools = coordsMiddleSchools.map(function (p) { return [p[0], p[1], 6]; });
-   console.log(coordsMiddleSchools);
-   // console.log(middleschools);
-
-    heat_middleschools = L.heatLayer(coordsMiddleSchools,{
-
-           radius: 36,
-           blur: 24,
-           maxZoom: 12,
-
-           // onEachFeature: function(feature,layer){
-           //   console.log(layer.feature.geometry);
-           //   // var coord = layer.feature.geometry.coordinates;
-           //   // coordsMiddleSchools.push(coord);
-           // },
-
-       });
-
-   console.log("middleschools heatmap generated.");
-
-
-
-}
-
-// function showInfo(data, tabletop) {
-//   alert('Successfully processed!')
-//   console.log(data);
+//MAP THE POINTS FROM THE GOOGLE SHEET
+// document.addEventListener('DOMContentLoaded',function(){
+//  Tabletop.init({
+//      key: sheeturl, //google spreadsheet id
+//      callback: function(sheet, tabletop){
+//        for (var i in sheet){
+//          var place = sheet[i]; //getting e row from table
+//          var coord = [place.Hlat, place.Hlon];
+//          coordsMiddleSchools.push(coord);
+//
+//          var CompanyLayerMappedMarker = L.marker([place.Clat, place.Clon]).addTo(map)
+//            .bindTooltip(
+//              // "<img src=" + "/> " +
+//              "<img src=https://ibb.co/WzbnY1P>" +
+//              "</br>" +
+//
+//              // "<b>Name: </b>" +
+//              // place.FirstName + ' ' + place.LastName +
+//              // "</br>" +
+//
+//              "<b>Title: </b>" +
+//              place.Title +
+//              "</br>" +
+//
+//              "<b>Company: </b>" +
+//              place.Company +
+//              "</br>" +
+//
+//              // "<b>Relationship: </b>" +
+//              // place.Relationship +
+//              // "</br>" +
+//
+//              "</br><button class='btn btn-light my-2 my-sm-0' style='font-size:12px;'>Connect!</button>"
+//            );
+//
+//         CompanyMarkers.push(CompanyLayerMappedMarker);
+//         // console.log(CompanyMarkers);
+//         console.log("company marker generated.");
+//
+//
+//          var HomeLayerMappedMarker = L.marker([place.Hlat, place.Hlon])
+//            .addTo(map)
+//            .bindTooltip(
+//              // "<img src=" + "/> " +
+//              "<img src=https://simplemaps.com/static/img/frog.png>" +
+//              "</br>" +
+//
+//              "<b>Name: </b>" +
+//              place.FirstName + ' ' + place.LastName +
+//              "</br>" +
+//
+//              "<b>Title: </b>" +
+//              place.Title +
+//              "</br>" +
+//
+//              "<b>Company: </b>" +
+//              place.Company +
+//              "</br>" +
+//
+//              "<b>Relationship: </b>" +
+//              place.Relationship +
+//              "</br>" +
+//
+//              "</br><button class='btn btn-light my-2 my-sm-0' style='font-size:12px;'>Connect!</button>"
+//            );
+//
+//         HomeMarkers.push(HomeLayerMappedMarker);
+//
+//            }
+//
+//      },
+//      simpleSheet: true
+//    });
+//
+//    //GENERATE HEATMAP FOR THE MIDDLE SCHOOL DATA
+//
+//    //Reference
+//    // http://jsfiddle.net/jpeter06/yugh7t5m/
+//
+//    coordsMiddleSchools = coordsMiddleSchools.map(function (p) { return [p[0], p[1], 6]; });
+//    console.log(coordsMiddleSchools);
+//    // console.log(middleschools);
+//
+//     heat_middleschools = L.heatLayer(coordsMiddleSchools,{
+//
+//            radius: 36,
+//            blur: 24,
+//            maxZoom: 12,
+//
+//            // onEachFeature: function(feature,layer){
+//            //   console.log(layer.feature.geometry);
+//            //   // var coord = layer.feature.geometry.coordinates;
+//            //   // coordsMiddleSchools.push(coord);
+//            // },
+//
+//        });
+//
+//    console.log("middleschools heatmap generated.");
+//
+//
+//
 // }
-);
+//
+// // function showInfo(data, tabletop) {
+// //   alert('Successfully processed!')
+// //   console.log(data);
+// // }
+// );
 
 
 //control heatmap generation
