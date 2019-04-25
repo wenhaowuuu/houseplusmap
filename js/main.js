@@ -12,7 +12,7 @@
 //claim the global variables:
 // var zipcodes_url = "https://raw.githubusercontent.com/wenhaowuuu/CodeBrickMap/master/data/bay_zipcode.geojson";
 var landuse_url = "https://raw.githubusercontent.com/wenhaowuuu/houseplusmap/master/data/20190409_PA_landuse_WGS.geojson";
-var address_url = "";
+var address_url = "https://raw.githubusercontent.com/wenhaowuuu/houseplusmap/master/data/20190424_PA_adpoints_joined_s.geojson";
 
 var coordsMiddleSchools = [];
 var heat_middleschools;
