@@ -10,9 +10,9 @@
 
 
 //claim the global variables:
-var zipcodes_url = "https://raw.githubusercontent.com/wenhaowuuu/CodeBrickMap/master/data/bay_zipcode.geojson";
+// var zipcodes_url = "https://raw.githubusercontent.com/wenhaowuuu/CodeBrickMap/master/data/bay_zipcode.geojson";
 var landuse_url = "https://raw.githubusercontent.com/wenhaowuuu/houseplusmap/master/data/20190409_PA_landuse_WGS.geojson";
-
+var address_url = "";
 
 var coordsMiddleSchools = [];
 var heat_middleschools;
@@ -115,22 +115,22 @@ $('#nighlightmap').click(function(){
 
 
 //map zipcodes in the Bay Area
-$(document).ready(function(){
-  $.ajax(zipcodes_url).done(function(data) {
-    var parsedzipdata = JSON.parse(data);
-    console.log("zipcodes parsed");
-    var layerMappedPolygons = L.geoJson(parsedzipdata,
-      {
-        style: {opacity:0.4,width:0.5,color:'#E0903F'},
-        // filter: myFilter2,
-        pointToLayer: function (feature, latlngs) {
-          return new L.Polygon(latlngs, {
-            });
-          }
-      // }).addTo(map).bindPopup(feature.properties.zip);
-    }).addTo(map).bindTooltip("我们住同一个社区耶!");
-    });
-});
+// $(document).ready(function(){
+//   $.ajax(zipcodes_url).done(function(data) {
+//     var parsedzipdata = JSON.parse(data);
+//     console.log("zipcodes parsed");
+//     var layerMappedPolygons = L.geoJson(parsedzipdata,
+//       {
+//         style: {opacity:0.4,width:0.5,color:'#E0903F'},
+//         // filter: myFilter2,
+//         pointToLayer: function (feature, latlngs) {
+//           return new L.Polygon(latlngs, {
+//             });
+//           }
+//       // }).addTo(map).bindPopup(feature.properties.zip);
+//     }).addTo(map).bindTooltip("我们住同一个社区耶!");
+//     });
+// });
 
 
 
