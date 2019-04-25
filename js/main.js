@@ -167,7 +167,7 @@ $(document).ready(function() {
                   return new L.Marker(latlng, {
                     icon:
                         new L.icon({
-                        iconUrl: 'https://i.ibb.co/G9qZPR0/house-icon.png',
+                        iconUrl: 'https://raw.githubusercontent.com/wenhaowuuu/houseplusmap/master/house-icon-s.png',
                         // iconUrl: 'https://image.ibb.co/h1dYFk/city_icons_01.png',
                         iconSize:     [30, 30],
                         shadowSize:   [10, 10],
