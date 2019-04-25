@@ -169,7 +169,7 @@ $(document).ready(function() {
                         new L.icon({
                         iconUrl: 'https://i.ibb.co/G9qZPR0/house-icon.png',
                         // iconUrl: 'https://image.ibb.co/h1dYFk/city_icons_01.png',
-                        iconSize:     [25, 25],
+                        iconSize:     [30, 30],
                         shadowSize:   [10, 10],
                         iconAnchor:   [20, 20],
                     })
