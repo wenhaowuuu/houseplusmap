@@ -173,7 +173,43 @@ $(document).ready(function() {
                         shadowSize:   [10, 10],
                         iconAnchor:   [20, 20],
                     })
-                  }).bindTooltip(feature.properties.Name + ': ' + feature.properties.Designatio);
+                  })
+
+                  // .bindTooltip(feature.properties.Name + ': ' + feature.properties.Designatio);
+
+                  .bindTooltip(
+                               // "<img src=" + "/> " +
+                               // "<img src=https://simplemaps.com/static/img/frog.png>" +
+                               // "</br>" +
+
+                               // "<b>Name: </b>" +
+                               // place.FirstName + ' ' + place.LastName +
+                               // "</br>" +
+
+                               "<b>Address: </b>" +
+                               feature.properties.Name +
+                               "</br>" +
+
+                               "<b>Zoning: </b>" +
+                               feature.properties.Designatio +
+                               "</br>"
+
+                               // "<b>Relationship: </b>" +
+                               // place.Relationship +
+                               // "</br>" +
+
+                               // + "</br><button class='btn btn-light my-2 my-sm-0' style='font-size:12px;'>Check!</button>"
+                             ).bindPopup(
+                               "<b>Name: </b>" +
+                               feature.properties.Designatio +
+                               "</br>" +
+
+                               "</br><a class='btn btn-light my-2 my-sm-0' style='font-size:12px;' href='https://www.cityofpaloalto.org/civicax/filebank/documents/8700';return true;'>Check requirement!</a>"
+
+                               // <a class='btn btn-light my-2 my-sm-0' style='font-size:12px;' href='https://www.som.com/projects';return true;'>Learn more</a>"
+
+                             );
+
               }
             }).addTo(map);
           });
