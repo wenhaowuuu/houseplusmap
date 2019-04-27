@@ -214,6 +214,40 @@ $(document).ready(function() {
             }).addTo(map);
           });
       // });
+
+      // LOADING THE PLACE POINTS INFO INTO THE HEATMAP SOURCE FILE
+      // var place = sheet[i]; //getting e row from table
+      //          var coord = [place.Hlat, place.Hlon];
+      //          coordsMiddleSchools.push(coord);
+      //
+      //
+      //
+      // GENERATING THE HEATMAP BASED ON RECORDED POINTS
+      // Reference
+      //    // http://jsfiddle.net/jpeter06/yugh7t5m/
+      //
+      //    coordsMiddleSchools = coordsMiddleSchools.map(function (p) { return [p[0], p[1], 6]; });
+      //    console.log(coordsMiddleSchools);
+      //    // console.log(middleschools);
+      //
+      //     heat_middleschools = L.heatLayer(coordsMiddleSchools,{
+      //
+      //            radius: 36,
+      //            blur: 24,
+      //            maxZoom: 12,
+      //
+      //            // onEachFeature: function(feature,layer){
+      //            //   console.log(layer.feature.geometry);
+      //            //   // var coord = layer.feature.geometry.coordinates;
+      //            //   // coordsMiddleSchools.push(coord);
+      //            // },
+      //
+      //        });
+      //
+      //    console.log("middleschools heatmap generated.");
+
+
+
     }
   );
 
