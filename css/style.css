@@ -111,7 +111,7 @@ input:checked + .slider:before {
   /* top:8%; */
   top:40px;
   width:40%;
-  left:460px;
+  left:20%;
 }
 
 #header_text{
