@@ -27,7 +27,7 @@ var southWest = L.latLng(37.015900, -123.355811),
 var map = L.map('map', {
  maxBounds: bounds,
  center: [37.440127, -122.147568],
- zoom: 16,
+ zoom: 15,
  minZoom: 7,
  maxZoom: 18
 });
@@ -135,22 +135,22 @@ $('#nighlightmap').click(function(){
 
 
 //map land use shapefiles in Palo Alto
-$(document).ready(function(){
-  $.ajax(landuse_url).done(function(data) {
-    var parsedzipdata1 = JSON.parse(data);
-    console.log("zipcodes parsed");
-    var layerMappedPolygons = L.geoJson(parsedzipdata1,
-      {
-        style: {opacity:0.8,width:0.8,color:'	#4169E1'},
-        // filter: myFilter2,
-        pointToLayer: function (feature, latlngs) {
-          return new L.Polygon(latlngs, {
-            });
-          }
-      // }).addTo(map).bindPopup(feature.properties.zip);
-    }).addTo(map).bindPopup("Check the land use zoning here!");
-    });
-});
+// $(document).ready(function(){
+//   $.ajax(landuse_url).done(function(data) {
+//     var parsedzipdata1 = JSON.parse(data);
+//     console.log("zipcodes parsed");
+//     var layerMappedPolygons = L.geoJson(parsedzipdata1,
+//       {
+//         style: {opacity:0.8,width:0.8,color:'	#4169E1'},
+//         // filter: myFilter2,
+//         pointToLayer: function (feature, latlngs) {
+//           return new L.Polygon(latlngs, {
+//             });
+//           }
+//       // }).addTo(map).bindPopup(feature.properties.zip);
+//     }).addTo(map).bindPopup("Check the land use zoning here!");
+//     });
+// });
 
 
 //map the joined address point data
