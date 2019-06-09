@@ -395,6 +395,345 @@ var ShowCompany = function(){
 };
 
 
+//Load PDF layout page for each property while clicing
+var tableToPDF = function(){
+  console.log("PDF starts");
+  // SETTUING THE THE PDF PARAMETERS
+  // https://stackoverflow.com/questions/24335372/setting-pdf-page-width-height-when-using-jspdf
+  var doc = new jsPDF("1", "", "letter");
+  var pageHeight = doc.internal.pageSize.height;
+  var pageWidth = doc.internal.pageSize.width;
+  console.log(pageHeight);
+  console.log(pageWidth);
+
+  // doc.addImage(imgData, 'JPEG', 164, 14, 35, 12, undefined);
+
+  doc.setFontSize(10);
+  doc.setFontType("light");
+  doc.setFont("inherit");
+  doc.text(10, 5, 'DataXLat @ Geoadaptive LLC.');
+  doc.text(150,5, '250 Summer St, Boston, MA, USA');
+  //DIVIDING LINE
+  doc.setLineWidth(1);
+  doc.setDrawColor(255,140,40);
+  doc.line(0, 8, 240, 8);
+
+  doc.setFont("times");
+  doc.setFontSize(18);
+  doc.setFontType("bold");
+  doc.text(10, 18, 'Infrastructure Efficiency Profile of ');
+  doc.setTextColor(255,140,40);
+  doc.text(110, 18, ' ' + P_muni);
+  // doc.text(20, 30, '     ');
+
+  //INTRO
+  doc.setFont("times");
+  doc.setFontType("normal");
+  doc.setFontSize(12);
+  doc.setTextColor(0,0,0);
+  doc.text(10, 30, 'Following is a brief summary of infrastructure efficiency condition in ');
+  doc.text(10, 36, '' + P_muni + ', department of ' + P_department + ', in ' + P_country + '.');
+  // doc.text(10, 50, 'this City of ' + P_muni + ' is selected.');
+
+  // doc.addImage(mapData1, 'JPEG', 10, 40, 195, 76, undefined);
+
+
+  //INSERT THE GRAPH & CHARTS
+  //DEFINE THE DIFFERENT COLOR???
+
+  //REFERENCE HERE
+  //https://stackoverflow.com/questions/43664722/how-to-save-chart-js-charts-as-image-without-black-background-using-blobs-and-fi
+  // layout A
+  //
+  // var newCanvas1 = document.querySelector('#myChart1');
+  // var newCanvasImg1 = newCanvas1.toDataURL("image/jpeg", 1.0);
+  // doc.addImage(newCanvasImg1,'JPEG', 120, 130, 80, 80);
+  //
+  // var newCanvas2 = document.querySelector('#myChart2');
+  // var newCanvasImg2 = newCanvas2.toDataURL("image/jpeg", 1.0);
+  // doc.addImage(newCanvasImg2,'JPEG', 120, 220, 60, 40);
+
+
+
+  // //another graph maybe?
+  // var newCanvas3 = document.querySelector('#myChart2');
+  // var newCanvasImg3 = newCanvas3.toDataURL("image/jpeg", 1.0);
+  // doc.addImage(newCanvasImg2,'JPEG', 98, 80, 60, 40);
+
+  //LAYOUT OPTION B - GRAPH FIRST
+  // var newCanvas1 = document.querySelector('#myChart1');
+  // var newCanvasImg1 = newCanvas1.toDataURL("image/jpeg", 1.0);
+  // doc.addImage(newCanvasImg1,'JPEG', 10, 40, 80, 80);
+  //
+  // var newCanvas2 = document.querySelector('#myChart2');
+  // var newCanvasImg2 = newCanvas2.toDataURL("image/jpeg", 1.0);
+  // doc.addImage(newCanvasImg2,'JPEG', 98, 40, 60, 40);
+  //
+  // //another graph maybe?
+  // var newCanvas3 = document.querySelector('#myChart2');
+  // var newCanvasImg3 = newCanvas3.toDataURL("image/jpeg", 1.0);
+  // doc.addImage(newCanvasImg2,'JPEG', 98, 80, 60, 40);
+
+
+
+  //TRIAL 2 STACKED BAR CHART
+
+  //SOCIAL ECONOMIC INFO
+  var splitTitle = doc.splitTextToSize("      Guatemala, a Central American country south of Mexico, is home to volcanoes, rainforests and ancient Mayan sites. The capital, Guatemala City, features the stately National Palace of Culture and the National Museum of Archaeology and Ethnology. Antigua, west of the capital, contains preserved Spanish colonial buildings. Lake Atitlán, formed in a massive volcanic crater, is surrounded by coffee fields and villages. Guatemala City is the capital of Guatemala, in Central America. It’s known for its Mayan history, high-altitude location and nearby volcanoes. On central Plaza Mayor, also known as Parque Central, the Metropolitan Cathedral is full of colonial paintings and religious carvings. The National Palace of Culture has a balcony overlooking the square. South of the city, trails lead up to the active Pacaya Volcano.", 90);
+  doc.text(10, 130, splitTitle);
+
+  // doc.setFont("georgia");
+  // doc.setFontType("bold");
+  // doc.text(10, 130, '1) SOCIAL-ECONOMIC');
+  // doc.setFont("times");
+  // doc.setFontType("normal");
+  // doc.text(10, 138, P_muni + ' has a poverty rate of ' + P_pov.toFixed(3) + '%.');
+
+
+
+  //TRANSPORTATION
+  // doc.setFont("georgia");
+  // doc.setFontType("bold");
+  // doc.text(10, 150, '2) TRANSPORTATION');
+  // doc.setFont("times");
+  // doc.setFontType("normal");
+  // doc.text(10, 158, 'Total Length of Road: ' + P_length.toFixed(3) + ' km');
+  // doc.text(10, 164, 'Road Density: ' + P_density.toFixed(3) + ' km per square km');
+  // doc.text(10, 170, 'Road in Urban Area: ' + P_rd_urban.toFixed(3) + ' km');
+  // doc.text(10, 176, 'Road in Rural Area: ' + P_rd_rural.toFixed(3) + ' km');
+  // doc.text(10, 182, 'Major Road: ' + P_rd_1.toFixed(3) + ' km');
+  // doc.text(10, 188, 'Secondary Road: ' + P_rd_2.toFixed(3) + ' km');
+  // doc.text(10, 194, 'Tertiary Road: ' + P_rd_3.toFixed(3) + ' km');
+  // doc.text(10, 200, 'Urban Road: ' + P_rd_urban.toFixed(3) + ' km');
+  // doc.text(10, 206, 'Rural Road: ' + P_rd_rural.toFixed(3) + ' km');
+  // doc.text(10, 212, 'Road Efficiency');
+  // doc.text(10, 218, '(% population within 30 minutes of road): ' + '41%');
+
+
+
+
+
+  //PAGE NUMBER
+  doc.setFont("arial");
+  doc.setFontType("normal");
+  doc.setFontSize(8);
+  doc.text(95, 275, 'Page 1 of 3');
+
+
+
+  // JUMP TO THE SECOND PAGE
+  // ADD ANOTHER PAGE
+  // REFERENCE
+  // https://stackoverflow.com/questions/19272933/jspdf-multi-page-pdf-with-html-renderrer
+  // https://github.com/MrRio/jsPDF/issues/101
+  // https://stackoverflow.com/questions/25904440/jspdf-addhtml-multiple-canvas-page
+  doc.addPage();
+  doc.setPage(2);
+
+  doc.setFontSize(10);
+  doc.setFontType("light");
+  doc.setFont("inherit");
+  doc.text(10, 5, 'DataXLat @ Geoadaptive LLC.');
+  doc.text(150, 5, '250 Summer St, Boston, MA, USA');
+  //DIVIDING LINE
+  doc.setLineWidth(1);
+  doc.setDrawColor(255,140,40);
+  doc.line(0, 8, 240, 8);
+
+
+  //TABLE HEADING STARTS HERE
+
+
+  //for tables in PDF
+  // VERY GOOD EXAMPLE HERE
+  // https://github.com/simonbengtsson/jsPDF-AutoTable
+
+
+
+
+  //GOOD REFERENCE
+  // https://mrrio.github.io/
+  // define the map as an image
+  // var columns = ["INDICATORS", "Name", "Country"];
+  // var rows = [
+  //            [1, "Peten", "Guatemala"],
+  //            [2, "La Ibertad", "Guatemala"],
+  //            [3, "Garcia", "Guatemala"],
+  //          ];
+  //
+
+
+  var columns = [
+           {title: "Subjects", dataKey: "sb"},
+           {title: "Indicators", dataKey: "id"},
+           {title: "Value", dataKey: "val"},
+         ];
+  var rows = [
+           {"sb": "TRANSPORTATION", "id": "Total Road Length (km)", "val": P_length.toFixed(3)},
+           {"sb": "", "id": "Road Density (km per sq km)", "val": P_density.toFixed(3)},
+           {"sb": "", "id": "Major Road (km)", "val": P_rd_1.toFixed(3)},
+           {"sb": "", "id": "Secondary Road (km)", "val": P_rd_2.toFixed(3)},
+           {"sb": "", "id": "Tertiary Road (km)", "val": P_rd_3.toFixed(3)},
+           {"sb": "", "id": "", "val": ""},
+           {"sb": "UTILITIES", "id": "Sanitation", "val": "67%"},
+           {"sb": "", "id": "Electricity", "val": "84%"},
+           {"sb": "", "id": "Water", "val": "90%"},
+           {"sb": "", "id": "Basic Needs Unsatisfied", "val": "28%"},
+           {"sb": "", "id": "", "val": ""},
+           {"sb": "EDUCATION", "id": "Literacy Rates", "val": "75%"},
+           {"sb": "", "id": "Number of Primary Schools", "val": "311"},
+           {"sb": "", "id": "Number of Middle Schools", "val": "69"},
+           {"sb": "", "id": "Number of High Schools", "val": "18"},
+           {"sb": "", "id": "Total Enrollment Number", "val": "12067"},
+           {"sb": "", "id": "", "val": ""},
+           {"sb": "PUBLC HEALTH", "id": "Number of Hospitals", "val": "3"},
+           {"sb": "", "id": "Number of Clinics", "val": "42"},
+           {"sb": "", "id": "Maximum Capacity of Medical Treatment", "val": "30021"},
+
+         ];
+
+  // reference doc.addImage(div,'JPEG', 174, 40, 48, 32);
+  // doc.autoTable(columns, rows);
+
+
+  // doc.autoTable(columns, rows, {
+  //   // header: {textColor: 255, fillColor: [41, 128, 185], fontStyle: 'bold'},
+  //   headerStyles: {fillColor: [255, 140, 40]},
+  //   alternateRow: { fillColor: 211},
+  //   styles: {
+  //     // fillColor: [245, 245, 245]
+  //     // fillColor: [214, 225, 225]
+  //   },
+  //   // rowStyles: {
+  //   //   {fillColor: [255, 140, 40]}
+  //   //
+  //   // },
+  //
+  //   columnStyles: {
+  //     // sb: {fillColor: [214, 225, 225]},
+  //   	// id: {fillColor: [255,140,0],
+  //     },
+  //
+  //   margin: {left: 10, top: 20},
+  //   addPageContent: function(data) {
+  //     doc.setFontSize(14);
+  //     doc.setFontType("bold");
+  //     doc.setFont("georgia");
+  //   	doc.text("Table of Indicators", 10, 16);
+  //   }
+  // });
+
+  // generate table reference here
+  // GREAT EXAMPLE!!
+  // 0: https://simonbengtsson.github.io/jsPDF-AutoTable/
+  // 1: https://stackoverflow.com/questions/19807870/how-to-export-the-html-tables-data-into-pdf-using-jspdf
+  // 2: https://stackoverflow.com/questions/23018171/create-pdf-using-jspdf-with-formatted-table-data
+
+  //PAGE NUMBER
+  doc.setFont("arial");
+  doc.setFontType("normal");
+  doc.setFontSize(8);
+  doc.text(95, 275, 'Page 2 of 3');
+
+  //THE THIRD PAGE FOR TABLE ONLY
+  doc.addPage();
+  doc.setPage(3);
+
+
+  doc.setFontSize(10);
+  doc.setFontType("light");
+  doc.setFont("inherit");
+  doc.text(10, 5, 'DataXLat @ Geoadaptive LLC.');
+  doc.text(150, 5, '250 Summer St, Boston, MA, USA');
+  //DIVIDING LINE
+  doc.setLineWidth(1);
+  doc.setDrawColor(255,140,40);
+  doc.line(0, 8, 240, 8);
+
+
+  //EDUCATION
+  doc.setFont("georgia");
+  doc.setFontType("bold");
+  doc.setFontSize(12);
+  doc.text(10, 18, '1) EDUCATION');
+  doc.setFont("times");
+  doc.setFontType("normal");
+  doc.text(10, 26, 'Literacy Rate: ' + '75%');
+  doc.text(10, 32, 'Number of Primary Schools: ' + '311');
+  doc.text(10, 38, 'Number of Middle Schools: ' + '69');
+  doc.text(10, 44, 'Number of High Schools: ' + '18');
+  doc.text(10, 50, 'Total Enrollment Number: ' + '12067');
+
+  //PUBLIC HEALTH
+  doc.setFont("georgia");
+  doc.setFontType("bold");
+  // doc.setFontSize(12);
+  doc.text(10, 62, '2) PUBLIC HEALTH');
+  doc.setFont("times");
+  doc.setFontType("normal");
+  doc.text(10, 70, 'Number of Hospitals: ' + '3');
+  doc.text(10, 76, 'Number of Clinics: ' + '42');
+  doc.text(10, 82, 'Maximum Capacity for Medical Treatment: ' + '30021');
+
+  //UTILITY
+  doc.setFont("georgia");
+  doc.setFontType("bold");
+  doc.text(10, 94, '3) UTILITIES');
+  doc.setFont("times");
+  doc.setFontType("normal");
+  doc.text(10, 102, 'Sanitation (% of coverage): ' + '1000 km');
+  doc.text(10, 108, 'Electricity (% of coverage): ' + '1000 km');
+  doc.text(10, 114, 'Water (% of coverage): ' + '1000 km');
+  doc.text(10, 120, 'Basic Needs Unsatisfied (% of coverage): ' + '50%');
+
+  //OTHER NOTES
+  doc.setFont("georgia");
+  doc.text(10, 250, 'Notes: ' + 'things to keep in mind');
+
+  //OTHER NOTES
+  doc.setFont("times");
+  doc.setFontType("italic");
+  doc.setFontSize(10);
+  doc.text(10, 260, '* This data was obtained from ');
+  doc.text(10, 265, '' + P_source);
+
+
+  //PAGE NUMBER
+  doc.setFont("arial");
+  doc.setFontType("normal");
+  doc.setFontSize(8);
+  doc.text(95, 275, 'Page 2 of 3');
+
+
+
+
+
+
+
+  // doc.setFont("times");
+  // doc.setFontType("normal");
+  // doc.text(105, 80, 'This is centred text.', null, null, 'center');
+  // doc.text(105, 90, 'And a little bit more underneath it.', null, null, 'center');
+  // doc.text(200, 100, 'This is right aligned text', null, null, 'right');
+  // doc.text(200, 110, 'And some more', null, null, 'right');
+  // doc.text(20, 120, 'Back to left');
+  //
+  // doc.text(20, 140, '10 degrees rotated', null, 10);
+  // doc.text(20, 160, '-10 degrees rotated', null, -10);
+
+
+
+
+  doc.save('test.pdf');
+  console.log("PDF ready");
+
+}；
+
+
+
+
+
+
 //SWITCH THE BASEMAPS
 // $('#lightmap').click(function(){
 //   map.removeLayer(darkmap);
