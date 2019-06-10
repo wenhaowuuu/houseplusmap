@@ -53,7 +53,6 @@
     <div id = "header">
 
       <div id="topbuttons-mappage" class="btn-group" role="group" aria-label="Button group with nested dropdown">
-<!-- class="btn btn-success" -->
         <div class="btn-group" role="group">
           <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle my-2 my-sm-0" style="border-color:grey;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Basemap
@@ -67,114 +66,52 @@
         </div>
 
         <div class="btn-group" role="group">
-          <!-- <button id="btnGroupDrop2" type="button" class="btn btn-dark dropdown-toggle my-2 my-sm-0" style="border-color:grey;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span id="selectedunit">Choose Unit</span>
-          </button> -->
-          <!-- <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-            <a class="dropdown-item" id="countryscale" href="#">Country</a>
-            <a class="dropdown-item" id="depscale" href="#">Department</a>
-            <a class="dropdown-item" id="distscale" href="#">District</a>
-          </div> -->
           <button id="heatmapcontrol" type="button" class="btn btn-success my-2 my-sm-0" style="border-color:grey;">
             Heatmap
           </button>
-          <!-- <button id="gapshowbutton" class="btn btn-dark" data-toggle="collapse" data-target="#rightcol-map" style="border-color:grey;">
-            <span id="selected5">Launch Analytics</span>
-          </button> -->
         </div>
 
       </div>
 
       <p id = "header_text"><strong> House+ 加加益居 | San Francisco, CA </strong></p>
-          <!-- <div id = "option">
-              <ul>
-                  <button class="link" style ="margin-left:15px;">Change to "national" scale for comparison: </button>
-                  <button id="citypop" class="link" style ="margin-left:15px;"> -> City by Population</button>
-                  <button id="citygdp" class="link" style ="margin-left:15px;"> -> City by GDP</button>
-                  <button id="cityincome" class="link" style ="margin-left:15px;"> -> City by Per Capita Income</button>
-              </ul>
-          </div> -->
-    </div>
-    <div style="position: absolute; margin:10px; padding:4px; top:60px; left:8px; width: 12%; filter: alpha(opacity=60); z-index:40;">
-      <p style="font-family: Arial; color:black;"> 加加益居的简单介绍，使用模式。
-<br><br>
-<!-- House+ is a collaborative working on helping investors to smartly select and increase value-addition on high quality properties. -->
 
-<!-- Team Codebrick is an active connection group formed with architectural, engineering and construction industry professionals in the Bay Area.  -->
-      </p>
-      <!-- <p style="font-family: Arial; color:black;"># Add more functionalities, such as density map, filter based on age, title, and company dropdown etc. Targeting Thursday? </p> -->
-      <!-- Rounded switch -->
-      <br>
-      <br>
-      <h5> Switch </h5>
+
+    </div>
+
+
+    <div style="position: absolute; margin:10px; padding:4px; top:60px; left:8px; width:0; filter: alpha(opacity=60); z-index:40;">
+
+      <!-- <p style="font-family: Arial; color:black;"> 加加益居的简单介绍，使用模式。
+        <br><br>
+      </p> -->
+
+      <!-- <h5> Switch </h5>
       <label id = "switcher" class="switch" ontoggle = "ShowCompany()">
         <input type="checkbox">
         <span class="slider round"></span>
-      </label>
+      </label> -->
+
     </div>
-    <!-- <div style="position: absolute; left: 4px; width: 400px; top: 30px; bottom: 0;z-index:50;">
-        <h1 class = "main-heading"><strong>Economic Development </strong> in <strong id = "color"> Chinese </strong> Cities</h1>
-            <img id = "image" src="http://www.visiontimes.com/uploads/2015/05/7835817412_6359bee014_z-600x308.jpg">
-            <br>
-            <br>
-            <button id = "next" type = "button"> NEXT </button>
-            <button id = "previous" type = "button"> PREVIOUS </button>
-            <br>
-        <br>
-        <br>
-        <div class='explanation'>
-            <h4 id = "sidebar-heading"></h4>
-            <p id = "sidebar-text"></p>
-        </div>
-        <br>
-        <br>
-        <div style = "position:relative;left:5px;width:390px;top:0;">
-            <p class = storylink> Click the markers to read statistics.</p>
-            <p class = storylink> More Story about Chinese Cities here &nbsp;
-               <a href="http://best-cities-china.org/best-performing-cities-china-2016.pdf">
-                 <span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
-               </a>
-            </p>
-        </div>
-    </div> -->
-    <!-- Map -->
-    <!-- Embed the google earth engine map on Chongqing -->
-    <!-- <div class="earthmap">
-      <iframe id="earthengine" src="https://earthengine.google.com/iframes/timelapse_player_embed.html#v=29.67111,106.54495,9.694,latLng&t=1.17" frameborder="0"></iframe>
-    </div> -->
-    <!-- <div style = "position: absolute; left: 400px; top: 1000px; bottom: 0;z-index:40;"> -->
-      <!-- <h3 style = "position:relative; left:30px;font-weight:bold; color:#ffffff;"> A Closer Look in Beijing</h3>
-        <div>
-          <label id = "inputlabel" type = "button"> Step 0: Please first change scale to "Beijing"</label>
-          <br>
-          <label id = "inputlabel" for="dest" type = "button"> Step 1: Please enter your origin</label>
-          <input id = "dest" type="text" value="try 'Haidian'">
-          <br>
-          <label id = "inputlabel" type = "button"> Step 2: Please click on your interested property for visit</label>
-        </div>
-        <div>
-          <button id ="Search" type = "button">
-              <span class="glyphicon glyphicon-star" aria-hidden="true"></span> &nbsp;Step 3 Search for your Origin!
-          </button>
-          <button id ="Route" type = "button">
-              <span class="glyphicon glyphicon-star" aria-hidden="true"></span> &nbsp;Step 4 Show the Optimal Visiting Route!
-          </button>
-        </div> -->
 
+    <div class='pointer'></div>
 
-    <div id="map" style="position: absolute; right:0; left: 15%; top: 30px; bottom: 600px;z-index:10;">  </div>
-      <!-- <div class="dropdown1">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Change BaseMap
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li id = "dark"><a href="#">Dark</a></li>
-              <li id = "light"><a href="#">Light</a></li>
-              <li id = "antique"><a href="#">Antique</a></li>
-          </ul>
+    <form style="position: absolute; left: 1%; top: 15%; z-index:10;">
+      <div class="form-group">
+        <label for="exampleInputPassword1">Address</label>
+        <input type="text" class="form-control" id="address" placeholder="Address">
       </div>
-      <div class="dropdown2">
+      <!-- <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div> -->
+      <button type="submit" id="submit" class="btn btn-success">Submit</button>
+    </form>
+
+    <!-- <input id="address" type="text" style="position: absolute; left: 2%; top: 15%; height:3%; z-index:10;" value="your address"> -->
+
+    <div id="map" style="position: absolute; right:0; left: 0; top: 3%; height:97%; z-index:0;">  </div>
+
+      <!-- <div class="dropdown2">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Change Scale
             <span class="caret"></span>
@@ -183,8 +120,9 @@
               <li id = "national"><a href="#">National</a></li>
               <li id = "beijing"><a href="#">Beijing</a></li>
           </ul>
-      </div>
-      <div id="legend">
+      </div> -->
+
+      <!-- <div id="legend">
           <h5>GDP Growth Rate of Provinces</h5>
           <div>
             <div class = label1 id = fill1></div><p class = label1> < 7.7% (target rate)</p>
@@ -222,6 +160,9 @@
     <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
     <!-- <script src="js/MidTerm-setup.js"></script> -->
     <!-- <script src="js/bootstrap.js"></script> -->
+    <!-- <script type="text/javascript" src="/labs-common.js"></script> -->
+    <script src="src/leaflet-search.js"></script>
+
     <script src="js/bundle.js"></script>
     <script src="js/pdfreport.js"></script>
     <script src="js/leaflet-heat.js"></script>

@@ -61,6 +61,82 @@ var nightlightmap = L.tileLayer('https://map1.vis.earthdata.nasa.gov/wmts-webmer
 	tilematrixset: 'GoogleMapsCompatible_Level'
 });
 
+//add a scale bar to the map
+L.control.scale().addTo(map);
+
+// //add a location search box to the map
+// use google?? Not that straightforward!
+// var GooglePlacesSearchBox = L.Control.extend({
+//   onAdd: function() {
+//     var element = document.createElement("input");
+//     element.id = "searchBox";
+//     return element;
+//   }
+// });
+// (new GooglePlacesSearchBox).addTo(map);
+//
+// var input = document.getElementById("searchBox");
+// var searchBox = new google.maps.places.SearchBox(input);
+//
+// searchBox.addListener('places_changed', function() {
+//   var places = searchBox.getPlaces();
+//
+//   if (places.length == 0) {
+//     return;
+//   }
+//
+//   var group = L.featureGroup();
+//
+//   places.forEach(function(place) {
+//
+//     // Create a marker for each place.
+//     var marker = L.marker([
+//       place.geometry.location.lat(),
+//       place.geometry.location.lng()
+//     ]);
+//     group.addLayer(marker);
+//   });
+//
+//   group.addTo(map);
+//   map.fitBounds(group.getBounds());
+//
+// });
+
+
+// var searchLayer = L.layerGroup().addTo(map);
+// //... adding data in searchLayer ...
+// map.addControl( new L.Control.Search({layer: searchLayer}) );
+
+//also tried this, didn't work out
+// var markersLayer = new L.LayerGroup();	//layer contain searched elements
+//
+// 	map.addLayer(markersLayer);
+//
+// var controlSearch = new L.Control.Search({
+// 		position:'topleft',
+// 		layer: markersLayer,
+// 		initial: false,
+// 		zoom: 12,
+// 		marker: false,
+//     // z-index: 50,
+// 	});
+// 	map.addControl( controlSearch );
+
+//not useful below:
+// var searchControl = new L.esri.Controls.Geosearch().addTo(map);
+//
+//   var results = new L.LayerGroup().addTo(map);
+//
+//   searchControl.on('results', function(data){
+//     results.clearLayers();
+//     for (var i = data.results.length - 1; i >= 0; i--) {
+//       results.addLayer(L.marker(data.results[i].latlng));
+//     }
+//   });
+
+setTimeout(function(){$('.pointer').fadeOut('slow');},3400);
+
+
 
 //var satellite map
 var mapLink =
@@ -251,123 +327,123 @@ $(document).ready(function() {
     }
   );
 
+//
+// $('#submit').click(function(){
+//
+// });
 
 //add the point data from the shared google sheet
 // var code = "2PACX-1vS7PmW1BbpRdjWqeTQJM7SjHKsuVMJAFf9-b5-BzTEtz15xcQ7Rz4a6VKGV09dArOFG8hb6C66Ydnww";
-var sheeturl = 'https://docs.google.com/spreadsheets/d/1GW94JUDnyQYB3qzIK9sPuLUgwnDyEy4w3eWBASjdFPE/edit?usp=sharing';
+var sheeturl = 'https://docs.google.com/spreadsheets/d/1zX6g_gXPk90VrilFbLnbmhJJpjfTfE5FVsIbqEpbAiw/edit?usp=sharing';
 
-//SHOW THE MAP DIV GRADUALLY
-$('#map-mappage').show(10000);
-// map.addLayer(hybridmap);
+//load user input address
+var ad_input;
 
-//MAP THE POINTS FROM THE GOOGLE SHEET
-// document.addEventListener('DOMContentLoaded',function(){
-//  Tabletop.init({
-//      key: sheeturl, //google spreadsheet id
-//      callback: function(sheet, tabletop){
-//        for (var i in sheet){
-//          var place = sheet[i]; //getting e row from table
-//          var coord = [place.Hlat, place.Hlon];
-//          coordsMiddleSchools.push(coord);
-//
-//          var CompanyLayerMappedMarker = L.marker([place.Clat, place.Clon]).addTo(map)
-//            .bindTooltip(
-//              // "<img src=" + "/> " +
-//              "<img src=https://ibb.co/WzbnY1P>" +
-//              "</br>" +
-//
-//              // "<b>Name: </b>" +
-//              // place.FirstName + ' ' + place.LastName +
-//              // "</br>" +
-//
-//              "<b>Title: </b>" +
-//              place.Title +
-//              "</br>" +
-//
-//              "<b>Company: </b>" +
-//              place.Company +
-//              "</br>" +
-//
-//              // "<b>Relationship: </b>" +
-//              // place.Relationship +
-//              // "</br>" +
-//
-//              "</br><button class='btn btn-light my-2 my-sm-0' style='font-size:12px;'>Connect!</button>"
-//            );
-//
-//         CompanyMarkers.push(CompanyLayerMappedMarker);
-//         // console.log(CompanyMarkers);
-//         console.log("company marker generated.");
-//
-//
-//          var HomeLayerMappedMarker = L.marker([place.Hlat, place.Hlon])
-//            .addTo(map)
-//            .bindTooltip(
-//              // "<img src=" + "/> " +
-//              "<img src=https://simplemaps.com/static/img/frog.png>" +
-//              "</br>" +
-//
-//              "<b>Name: </b>" +
-//              place.FirstName + ' ' + place.LastName +
-//              "</br>" +
-//
-//              "<b>Title: </b>" +
-//              place.Title +
-//              "</br>" +
-//
-//              "<b>Company: </b>" +
-//              place.Company +
-//              "</br>" +
-//
-//              "<b>Relationship: </b>" +
-//              place.Relationship +
-//              "</br>" +
-//
-//              "</br><button class='btn btn-light my-2 my-sm-0' style='font-size:12px;'>Connect!</button>"
-//            );
-//
-//         HomeMarkers.push(HomeLayerMappedMarker);
-//
-//            }
-//
-//      },
-//      simpleSheet: true
-//    });
-//
-//    //GENERATE HEATMAP FOR THE MIDDLE SCHOOL DATA
-//
-//    //Reference
-//    // http://jsfiddle.net/jpeter06/yugh7t5m/
-//
-//    coordsMiddleSchools = coordsMiddleSchools.map(function (p) { return [p[0], p[1], 6]; });
-//    console.log(coordsMiddleSchools);
-//    // console.log(middleschools);
-//
-//     heat_middleschools = L.heatLayer(coordsMiddleSchools,{
-//
-//            radius: 36,
-//            blur: 24,
-//            maxZoom: 12,
-//
-//            // onEachFeature: function(feature,layer){
-//            //   console.log(layer.feature.geometry);
-//            //   // var coord = layer.feature.geometry.coordinates;
-//            //   // coordsMiddleSchools.push(coord);
-//            // },
-//
-//        });
-//
-//    console.log("middleschools heatmap generated.");
-//
-//
-//
+
+// MAP THE POINTS FROM THE GOOGLE SHEET
+
+//search for the database
+document.addEventListener('DOMContentLoaded',function(){
+//tried to load the google sheet dots within the button click event, but no good luck -
+// document.getElementById("submit").addEventListener("click",function(){
+
+  ad_input = $('#address').val();
+  console.log(ad_input);
+
+var LATLNG = [];
+
+ Tabletop.init({
+     key: sheeturl, //google spreadsheet id
+     callback: function(sheet, tabletop){
+
+       // $("#submit").click(function(){
+         for (var i in sheet){
+           var place = sheet[i]; //getting e row from table
+
+
+           // if (ad_input<>"Address"){
+           //this code takes 20 second to return the selected location points!
+             if (place.Name.includes("108 California")){
+               var CompanyLayerMappedMarker = L.marker([place.LAT, place.LON]).addTo(map)
+                 .bindPopup(
+                   // "<img src=" + "/> " +
+                   // "<img src=https://ibb.co/WzbnY1P>" +
+                   "</br>" +
+
+                   // "<b>Name: </b>" +
+                   // place.FirstName + ' ' + place.LastName +
+                   // "</br>" +
+
+                   "<b>Address: </b>" +
+                   place.Name +
+                   "</br>" +
+
+                   "<b>Zoning: </b>" +
+                   place.Designatio +
+                   "</br>" +
+
+                   "<b>Extension: </b>" +
+                   "Yes" +
+                   "</br>" +
+
+                   "</br><button class='btn btn-light my-2 my-sm-0' style='font-size:12px;'>See potential!</button>"
+                 );
+
+
+
+                 CompanyMarkers.push(CompanyLayerMappedMarker);
+                 // console.log(CompanyMarkers);
+                 console.log("company marker generated.");
+
+                 LATLNG.push([place.LAT, place.LON]);
+             };
+             }
+             var bounds = new L.LatLngBounds(LATLNG);
+             map.fitBounds(bounds);
+       // })
+
+     },
+     simpleSheet: true
+   });
+
+   //GENERATE HEATMAP FOR THE MIDDLE SCHOOL DATA
+
+   //Reference
+   // http://jsfiddle.net/jpeter06/yugh7t5m/
+
+   // coordsMiddleSchools = coordsMiddleSchools.map(function (p) { return [p[0], p[1], 6]; });
+   // console.log(coordsMiddleSchools);
+   // console.log(middleschools);
+
+   //  heat_middleschools = L.heatLayer(coordsMiddleSchools,{
+   //
+   //         radius: 36,
+   //         blur: 24,
+   //         maxZoom: 12,
+   //
+   //         // onEachFeature: function(feature,layer){
+   //         //   console.log(layer.feature.geometry);
+   //         //   // var coord = layer.feature.geometry.coordinates;
+   //         //   // coordsMiddleSchools.push(coord);
+   //         // },
+   //
+   //     });
+   //
+   // console.log("middleschools heatmap generated.");
+
+
+
+}
+
+// function showInfo(data, tabletop) {
+//   alert('Successfully processed!')
+//   console.log(data);
 // }
-//
-// // function showInfo(data, tabletop) {
-// //   alert('Successfully processed!')
-// //   console.log(data);
-// // }
-// );
+);
+
+
+
+
 
 
 //control heatmap generation
@@ -727,7 +803,7 @@ var tableToPDF = function(){
   doc.save('test.pdf');
   console.log("PDF ready");
 
-}；
+};
 
 
 
